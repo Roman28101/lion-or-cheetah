@@ -24,7 +24,7 @@ def classify(model, image_path: str):
     predictions = model.predict(preprocessed_image)
     score = predictions[0][0]
 
-    label = "cheetah" if score <= 0.5 else "lion"
-    prob = score if label == "cheetah" else score
+    label = "lion" if score <= 0.5 else "cheetah"
+    prob = 1 - score if label == "lion" else score
 
     return label, prob
