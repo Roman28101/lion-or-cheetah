@@ -17,12 +17,12 @@ cnn_model = tf.keras.models.load_model(
 
 
 @app.route("/")
-def home():
+def home() -> str:
     return render_template("index.html")
 
 
 @app.post("/classify/")
-def upload_file():
+def upload_file() -> str:
     file = request.files["image"]
     upload_image_url = os.path.join(UPLOAD_FOLDER, file.name)
     file.save(upload_image_url)
